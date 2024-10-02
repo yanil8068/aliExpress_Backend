@@ -108,6 +108,7 @@ const addToCart = async (req, res) => {
 const getCart = async (req, res) => {
   try {
     const cart = await Cart.findOne({ user: req.user._id }).populate(
+      //get cart of a particular user only
       //finding the cart of the current user
       "items.product"
     );
