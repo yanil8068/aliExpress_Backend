@@ -16,11 +16,50 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+const getAllProductsOfCategory = async (req, res) => {
+  const { categoryId } = req.params; // Assuming the category ID is passed in the URL as a parameter
+  try {
+    const products = await Product.find({ category: categoryId }).populate({
+      path: "category",
+      select: "name",
+    });
+
+    // Check if any products were found
+    if (products.length === 0) {
+      return res.status(404).send({
+        message: "No products found for this category",
+      });
+    }
+
+    return res.status(200).send(products);
+  } catch (error) {
+    return res.status(500).send({
+      message: "Error in getting products of the category",
+      error: error.message,
+    });
+  }
+};
+
 const createProduct = async (req, res) => {
   try {
-    req.body.userId = req.user._id;
+    if (req.user.role != "admin") {
+      return res.status(500).send({
+        message: "only admin can add products",
+      });
+    }
+    req.body.userId = req.user._id; //66fbc869691387f2b7b2b8bb     req.body.userId = req.user._id;
     const product = await Product.create(req.body);
-    return res.status(201).send({ message: "product created successfully" });
+    if (typeof req.file !== "undefined") {
+      let url = req.file.path;
+      let filename = req.file.filename;
+      console.log("url", url);
+      console.log("filename", filename);
+      product.image = { url, filename };
+      await product.save();
+    }
+    return res
+      .status(201)
+      .send({ message: "product created successfully", data: product });
   } catch (error) {
     return res.status(500).send({
       message: "Error in creating product",
@@ -48,7 +87,25 @@ const updateProduct = async (req, res) => {
     const product = await Product.findByIdAndUpdate(id, req.body, {
       new: true,
     });
-    return res.status(200).send({ message: "Product updated successfully" });
+    console.log("user", req.user);
+    if (req.user.role != "admin") {
+      return res.status(500).send({
+        message: "only admin can add category",
+      });
+    }
+
+    if (typeof req.file !== "undefined") {
+      let url = req.file.path;
+      let filename = req.file.filename;
+      console.log("url", url);
+      console.log("filename", filename);
+      product.image = { url, filename };
+      await product.save();
+    }
+    //
+    return res
+      .status(200)
+      .send({ message: "Product updated successfully", data: product });
   } catch (error) {
     return res.status(500).send({
       message: "Error in updating Product",
@@ -60,6 +117,12 @@ const updateProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {
+    console.log("user", req.user);
+    if (req.user.role != "admin") {
+      return res.status(500).send({
+        message: "only admin can add category",
+      });
+    }
     const product = await Product.findByIdAndDelete(id);
     return res.status(200).send({ message: "Product deleted successfully" });
   } catch (error) {
@@ -72,6 +135,7 @@ const deleteProduct = async (req, res) => {
 
 export {
   getAllProducts,
+  getAllProductsOfCategory,
   createProduct,
   getProduct,
   updateProduct,

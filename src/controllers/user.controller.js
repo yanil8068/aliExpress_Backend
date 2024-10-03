@@ -69,4 +69,18 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { register, login, logout, deleteUser };
+const getUserProfile = async (req, res) => {
+  try {
+    const user = req.user; // `req.user` is set by the authentication middleware
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    return res.status(200).send({ user });
+  } catch (error) {
+    return res
+      .status(500)
+      .send({ message: "Error fetching user profile", error: error.message });
+  }
+};
+
+export { register, login, logout, deleteUser, getUserProfile };
