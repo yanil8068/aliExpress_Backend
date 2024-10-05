@@ -59,11 +59,10 @@ git clone https://github.com/yanil8068/aliExpress_Backend.git
    PORT=8000
    MONGODB_URI=yourmongodburi
    JWT_SECRET_KEY=yourjwtsecretkey
+   CLOUD_NAME=yourcouldname
+   CLOUD_API_KEY=yourcloudapikey
+   CLOUD_API_SECRET=yourcloudapisecret
    ```
-
-CLOUD_NAME=yourcouldname
-CLOUD_API_KEY=yourcloudapikey
-CLOUD_API_SECRET=yourcloudapisecret
 
 ````
 
