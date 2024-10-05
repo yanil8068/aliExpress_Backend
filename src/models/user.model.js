@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs"; // Import bcrypt for password hashing and comparison
 
+// Schema for user details
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -21,6 +22,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// Middleware to hash the password before saving the user document
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
@@ -34,10 +36,12 @@ userSchema.pre("save", async function (next) {
   }
 });
 
+// Method to compare entered password with the hashed password
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compareSync(enteredPassword, this.password);
 };
 
+// Export the User model
 const User = mongoose.model("User", userSchema);
 
 export default User;

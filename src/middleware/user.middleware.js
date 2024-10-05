@@ -1,6 +1,7 @@
 import { verifyToken } from "../utilities/jwt.js";
 import User from "../models/user.model.js";
 
+// Middleware to authenticate the user
 const authentication = async (req, res, next) => {
   try {
     console.log("req.headers.authorization", req.headers.authorization);

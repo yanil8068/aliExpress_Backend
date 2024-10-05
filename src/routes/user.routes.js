@@ -10,6 +10,7 @@ import { authentication } from "../middleware/user.middleware.js";
 
 const userRouter = express.Router();
 
+//routes for user
 userRouter.post("/register", register);
 userRouter.post("/login", login);
 userRouter.post("/logout", logout);

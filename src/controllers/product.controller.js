@@ -1,5 +1,6 @@
 import Product from "../models/product.model.js";
 
+// Fetch all products from the database, including their associated category names
 const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find({}).populate({
@@ -16,6 +17,7 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+// Fetch all products for a specific category by category ID
 const getAllProductsOfCategory = async (req, res) => {
   const { categoryId } = req.params; // Assuming the category ID is passed in the URL as a parameter
   try {
@@ -40,6 +42,7 @@ const getAllProductsOfCategory = async (req, res) => {
   }
 };
 
+// Create a new product, only allowed for admin users
 const createProduct = async (req, res) => {
   try {
     if (req.user.role != "admin") {
@@ -68,6 +71,7 @@ const createProduct = async (req, res) => {
   }
 };
 
+// Fetch a single product by ID
 const getProduct = async (req, res) => {
   const { id } = req.params;
   try {
@@ -81,6 +85,7 @@ const getProduct = async (req, res) => {
   }
 };
 
+// Update a product by ID, only allowed for admin users
 const updateProduct = async (req, res) => {
   const { id } = req.params;
   try {
@@ -114,6 +119,7 @@ const updateProduct = async (req, res) => {
   }
 };
 
+// Delete a product by ID, only allowed for admin users
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {

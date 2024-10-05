@@ -10,6 +10,7 @@ import { authentication } from "../middleware/user.middleware.js";
 
 const categoryRouter = express.Router();
 
+//routes for category
 categoryRouter.get("/details", getAllCategory);
 categoryRouter.get("/:id", getCategory);
 categoryRouter.post("/create", authentication, createCategory);

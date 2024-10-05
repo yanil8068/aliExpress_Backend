@@ -1,5 +1,6 @@
 import Category from "../models/category.model.js";
 
+// Fetch all categories from the database
 const getAllCategory = async (req, res) => {
   try {
     const category = await Category.find({});
@@ -11,6 +12,7 @@ const getAllCategory = async (req, res) => {
   }
 };
 
+// Fetch a single category by ID
 const getCategory = async (req, res) => {
   const { id } = req.params;
   try {
@@ -23,6 +25,7 @@ const getCategory = async (req, res) => {
   }
 };
 
+// Create a new category
 const createCategory = async (req, res) => {
   try {
     if (req.user.role != "admin") {
@@ -41,6 +44,7 @@ const createCategory = async (req, res) => {
   }
 };
 
+// Update an existing category by ID
 const updateCategory = async (req, res) => {
   const { id } = req.params;
   try {
@@ -60,6 +64,7 @@ const updateCategory = async (req, res) => {
   }
 };
 
+// Delete a category by ID
 const deleteCategory = async (req, res) => {
   const { id } = req.params;
   try {

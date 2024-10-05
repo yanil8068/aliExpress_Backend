@@ -19,6 +19,7 @@ const upload = multer({ storage });
 
 const productRouter = express.Router();
 
+//routes for product
 productRouter.get("/details", getAllProducts);
 productRouter.get("/details/category/:categoryId", getAllProductsOfCategory);
 productRouter.get("/:id", getProduct);
@@ -29,19 +30,14 @@ productRouter.post(
   upload.single("productimage"),
   createProduct
 );
-//productRouter.post(
-//   "/create",
-//   authentication,
-//   upload.single("productimage"),
-//   createProduct
-// );
+
 productRouter.patch(
   "/:id",
   authentication,
 
   upload.single("productimage"),
   updateProduct
-); //productRouter.patch("/:id", updateProduct);
+);
 productRouter.delete("/:id", authentication, deleteProduct);
 
 export default productRouter;

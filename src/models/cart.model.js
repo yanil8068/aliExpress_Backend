@@ -1,30 +1,6 @@
-// import mongoose from "mongoose";
-
-// const cartSchema = new mongoose.Schema(
-//   {
-//     userId: {
-//       type: mongoose.Schema.Types.ObjectId,
-//       ref: "User",
-//     },
-//     products: [
-//       {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: "Product",
-//       },
-//     ],
-//   },
-//   {
-//     versionKey: false,
-//     timestamps: true,
-//   }
-// );
-
-// const Cart = mongoose.model("Cart", cartSchema);
-
-// export default Cart;
-
 import mongoose from "mongoose";
 
+// Schema for individual cart items
 const cartItemSchema = new mongoose.Schema(
   {
     product: {
@@ -40,6 +16,7 @@ const cartItemSchema = new mongoose.Schema(
   }
 );
 
+// Schema for the entire cart
 const cartSchema = new mongoose.Schema(
   {
     user: {
@@ -55,6 +32,7 @@ const cartSchema = new mongoose.Schema(
   }
 );
 
+// Mongoose model for the Cart collection
 const Cart = mongoose.model("Cart", cartSchema);
 
 export default Cart;

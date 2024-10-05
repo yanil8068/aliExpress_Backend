@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Schema for product details
 const productSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
@@ -18,6 +19,7 @@ const productSchema = new mongoose.Schema(
   }
 );
 
+// Mongoose model for the Product collection
 const Product = mongoose.model("Product", productSchema);
 
 export default Product;

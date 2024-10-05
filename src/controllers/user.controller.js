@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import { createToken } from "../utilities/jwt.js";
 
+// Register a new user
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -17,6 +18,7 @@ const register = async (req, res) => {
   }
 };
 
+// User login
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -46,6 +48,7 @@ const login = async (req, res) => {
   }
 };
 
+// User logout
 const logout = async (req, res) => {
   try {
     res.clearCookie("authToken");
@@ -69,6 +72,7 @@ const deleteUser = async (req, res) => {
   }
 };
 
+// Get user profile
 const getUserProfile = async (req, res) => {
   try {
     const user = req.user; // `req.user` is set by the authentication middleware
