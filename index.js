@@ -38,22 +38,6 @@ app.get("/", (req, res) => {
   res.status(200).send("Welcome to the aliExpress");
 });
 
-// imageupload
-app.post("/imageupload", upload.single("listingimage"), async (req, res) => {
-  const file = req.file.path;
-  const filename = req.file.filename;
-  const imageupload = new Imageupload({
-    image: { url: file, filename: filename },
-  });
-  imageupload.save();
-  console.log("file", file);
-  console.log("filename", filename);
-  console.log("imageupload", imageupload);
-
-  res.status(200).send(req.file);
-});
-// imageupload
-
 const PORT = process.env.PORT || 8000;
 
 // app.listen(PORT, () => {
