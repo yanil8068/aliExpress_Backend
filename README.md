@@ -3,7 +3,9 @@
 **Description:**  
 This project is the backend API for an e-commerce frontend interface inspired by ALIEXPRESS. It provides user authentication, product management, and cart functionalities to support the frontend application. Users can browse products and manage their cart with secure authentication methods.
 
-**Vercel Deployment:**  
+**Frontend Deployed Netlify link**  
+[Live Demo](https://aliexpressfullstack.netlify.app/)
+**Backend Deployed Vercel Deployment:**  
 [Live Demo](https://ali-express-backend.vercel.app/)
 
 ## Tech Stack
@@ -14,14 +16,17 @@ This project is the backend API for an e-commerce frontend interface inspired by
 - **Mongoose** - ODM (Object Data Modeling) library for MongoDB and Node.js.
 - **bcryptjs** - Library for hashing passwords to ensure user security.
 - **JWT (JSON Web Tokens)** - For secure user authentication and authorization.
+- **Cloudinary** - Image upload functionality implementation.
+- **multer** - Image upload functionality implementation.
 - **Git** - Version control system for tracking changes and collaboration.
 
 ## Key Features
 
 - **User Authentication**: Secure login and signup functionalities using JWT and bcryptjs.
 - **Product Management**: API endpoints to create, read, update, and delete products.
+- **Image upload**: Products image can be uploaded.
 - **Cart Management**: Functionality to add, remove, and view items in the user's cart.
-- **Session Persistence**: User sessions are maintained for a seamless experience.
+- **Admin dashboard**: Admin dashboard for products and categories management.
 
 ## Setup and Access Instructions
 
@@ -91,8 +96,12 @@ Open [http://localhost:5173](http://localhost:8000) to view it in your browser.
 
 ### Cart & Product Management
 
-- Created RESTful API endpoints to manage products and user carts.
+- Created RESTful API endpoints to manage products and user carts .
 - Users can add or remove products from their cart, and their cart state is managed in MongoDB.
+
+### Admin dashboard for products and categories management.
+
+- Only a admin user can create , update and delete a product and category.
 
 ## Challenges Faced & Solutions
 
@@ -111,6 +120,7 @@ This project enhanced my skills in:
 -Building RESTful APIs with Express.js.
 -Managing user authentication securely with JWT and bcryptjs.
 -Handling asynchronous operations and database interactions using Mongoose.
+-Learned how to upload image and use cloud for storage.
 
 ## Authors
 
