@@ -3,9 +3,12 @@
 **Description:**  
 This project is the backend API for an e-commerce frontend interface inspired by ALIEXPRESS. It provides user authentication, product management, and cart functionalities to support the frontend application. Users can browse products and manage their cart with secure authentication methods.
 
-**Frontend Deployed Netlify link**  
+## Frontend Deployed Netlify link:
+
 [Live Demo](https://aliexpressfullstack.netlify.app/)
-**Backend Deployed Vercel Deployment:**  
+
+## Backend Deployed Vercel Deployment:
+
 [Live Demo](https://ali-express-backend.vercel.app/)
 
 ## Tech Stack
