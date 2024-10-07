@@ -7,7 +7,7 @@ This project is the backend API for an e-commerce frontend interface inspired by
 
 [Live Demo](https://aliexpressfullstack.netlify.app/)
 
-## Backend Deployed Vercel Deployment:
+## Backend Deployed Vercel link:
 
 [Live Demo](https://ali-express-backend.vercel.app/)
 
